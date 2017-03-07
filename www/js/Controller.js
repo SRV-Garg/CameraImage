@@ -33,7 +33,7 @@ examplecamera.controller("myCtrl",function($scope,$http,$ionicActionSheet,$timeo
 	   }
 	   else if(index==1){
 		   var source = pictureSource.SAVEDPHOTOALBUM;
-		navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50, destinationType: destinationType.DATA_URL,sourceType: source });
+		navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, destinationType: destinationType.DATA_URL,sourceType: source });
 	   }
      }
    });
@@ -45,10 +45,23 @@ examplecamera.controller("myCtrl",function($scope,$http,$ionicActionSheet,$timeo
 
  };
 	$scope.capturePhoto=function(){
+		alert("in capture");
 		navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,destinationType: destinationType.DATA_URL });
 	}
 	
+	$scope.getPhoto=function() {
+		alert("in gallery");
+		var source = pictureSource.SAVEDPHOTOALBUM;
+		navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, destinationType: destinationType.DATA_URL,sourceType: source });
+	}
+	
+	function onPhotoURISuccess(imageURI) {
+		//alert("gallery"+imageURI);
+		image = imageURI;
+	}
+	
 	function onPhotoDataSuccess(imageData) {
+		alert("camera");
 		image="data:image/jpeg;base64," + imageData;
 		
 	}
