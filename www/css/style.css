@@ -1,0 +1,12 @@
+/* Empty. Add your own CSS if you like */
+.fields {
+    text-align: -webkit-center;
+    margin: 16px 0px 0px;
+}
+input.inputbox.ng-pristine.ng-untouched.ng-valid.ng-empty {
+    border: 1px solid black;
+    width: 80%;
+    border-radius: 45px;
+    padding: 2px 0 2px 23px;
+    margin: 20px;
+}
